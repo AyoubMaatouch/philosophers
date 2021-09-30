@@ -17,6 +17,7 @@ void *print_info()
 
 int main(int ac, char **av)
 {
+	
 	if (ac == 5 || ac == 6)
 	{
 		t_philo_info *info_philo;
@@ -25,6 +26,7 @@ int main(int ac, char **av)
 		if (!check_ar(av))
 			return (ft_error("invalid arguments\n"));
 		init_philo(av, info_philo);
+		free(info_philo);
 	}
 	else
 		return (ft_error("invalid arguments\n"));
