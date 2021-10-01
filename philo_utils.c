@@ -38,20 +38,31 @@ int 	ft_error(char *err_msg)
 	exit(1);
 }
 
-void	init_philo(char **av, t_philo_info *info_philo)
+t_philo	**init_philo(char **av, t_info *info)
 {
 	int i;
+	t_philo **philo;
 
 	i = 0;
-	info_philo->num_philo = ft_atoi(av[1]);
-    info_philo->time_to_die = ft_atoi(av[2]);
-    info_philo->time_to_eat = ft_atoi(av[3]);
-    info_philo->time_to_sleep = ft_atoi(av[4]);
+	info->num_philo = ft_atoi(av[1]);
+    info->time_to_die = ft_atoi(av[2]) * 1000;
+    info->time_to_eat = ft_atoi(av[3]) * 1000;
+    info->time_to_sleep = ft_atoi(av[4]) * 1000;
     if (av[5])
-		info_philo->num_of_eats = ft_atoi(av[5]);
-	info_philo->philo_thread = malloc (sizeof(pthread_t) * (info_philo->num_philo));
-	info_philo->count_mutex = malloc (sizeof(pthread_mutex_t) * (info_philo->num_philo));
-	while (info_philo->num_philo > i)
-		pthread_mutex_init(info_philo->count_mutex + (i++), NULL);
-
+		info->num_of_eats = ft_atoi(av[5]);
+	else
+		info->num_of_eats = 0;
+	info->philo_thread = malloc (sizeof(pthread_t) * (info->num_philo));
+	info->count_mutex = malloc (sizeof(pthread_mutex_t) * (info->num_philo));
+	while (info->num_philo > i)
+		pthread_mutex_init(info->count_mutex + (i++), NULL);
+	philo = malloc (sizeof(t_philo) * (info->num_philo));
+	i = 0;
+	while (i < info->num_philo)
+	{
+		philo[i]->id_philo = i + 1;
+		philo[i]->t_info = info;
+		i++;
+	}
+	return 
 }
