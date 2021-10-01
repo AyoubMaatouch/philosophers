@@ -14,6 +14,8 @@ typedef struct s_philo_info {
 	int time_to_eat;
 	int time_to_sleep;
 	int num_of_eats;
+	pthread_t *philo_thread;
+	pthread_mutex_t *count_mutex;
 
 } t_philo_info;
 long    get_time(void);
