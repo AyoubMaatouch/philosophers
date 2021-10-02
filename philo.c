@@ -8,7 +8,7 @@ void *task_manager(t_info *info )
 		pthread_mutex_lock(info->count_mutex + 1);
 		// i = pthread_mutex_lock(info->count_mutex + 2);
 		printf("[%d]\n", i);
-		printf("[%.2ld] Thread Created\n", get_time());
+		printf("[%.2ld] Thread Created\n", get_time() / 1000);
 		pthread_mutex_unlock(info->count_mutex);
 		pthread_mutex_unlock(info->count_mutex + 1);
 
@@ -53,6 +53,11 @@ int main(int ac, char **av)
 		printf ("[%d][%d]\n", philo[0]->id_philo, philo[0]->t_info->num_philo);
 		printf ("[%d][%d]\n", philo[1]->id_philo, philo[1]->t_info->num_philo);
 		// philo_exec(info);
+		int i;
+		i = 0;
+		while (i < info->num_philo)
+			free(philo[i++]);
+		free(philo);
 		free(info);
 	}
 	else

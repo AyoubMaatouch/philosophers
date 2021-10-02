@@ -21,10 +21,10 @@ typedef struct s_info {
 typedef	struct s_philo {
 	t_info			*t_info;
 	int				id_philo;
-	struct s_philo	*next;
+	// struct s_philo	*next;
 }	t_philo;
 
 long    get_time(void);
 int     check_ar(char **ar);
-t_philo	*init_philo(char **av, t_info *info);
+t_philo	**init_philo(char **av, t_info *info);
 int 	ft_error(char *err_msg);

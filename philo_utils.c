@@ -56,13 +56,14 @@ t_philo	**init_philo(char **av, t_info *info)
 	info->count_mutex = malloc (sizeof(pthread_mutex_t) * (info->num_philo));
 	while (info->num_philo > i)
 		pthread_mutex_init(info->count_mutex + (i++), NULL);
-	philo = malloc (sizeof(t_philo) * (info->num_philo));
+	philo = malloc (sizeof(t_philo*) * (info->num_philo));
 	i = 0;
 	while (i < info->num_philo)
 	{
+		philo[i] = malloc (sizeof(t_philo));
 		philo[i]->id_philo = i + 1;
 		philo[i]->t_info = info;
 		i++;
 	}
-	return 
+	return philo;
 }
