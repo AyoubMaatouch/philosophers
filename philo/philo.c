@@ -3,12 +3,7 @@
 void	task_divider(int id, char *task, t_philo *philo)
 {
 	pthread_mutex_lock(philo->t_info->print);
-	if (ft_strncmp(task, "is eat", 5) == 0)
-		{
-			printf("%ld %d %s\n",(get_time() / 1000 - philo->eat), id, task);
-			philo->eat = get_time() / 1000;
-		}
-	else
+	
 		printf("%ld %d %s\n",(get_time()) / 1000, id, task);
 	pthread_mutex_unlock(philo->t_info->print);
 }
@@ -23,9 +18,9 @@ void *task_manager(t_philo *philo)
 	while (TRUE)
 	{
 		pthread_mutex_lock(lfork );
-		task_divider(philo->id_philo, "has taken a fork", philo);
+		task_divider(philo->id_philo, "\e[0;31m has taken a fork\033[0m", philo);
 		pthread_mutex_lock(rfork);
-		task_divider(philo->id_philo, "has taken a fork", philo); 
+		task_divider(philo->id_philo, "\e[0;31m has taken a fork\033[0m", philo); 
 		task_divider(philo->id_philo, "is eating", philo);
 		usleep(philo->t_info->time_to_eat);
 		pthread_mutex_unlock(lfork);
