@@ -6,7 +6,7 @@
 #    By: aymaatou <aymaatou@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/06 13:11:20 by aymaatou          #+#    #+#              #
-#    Updated: 2021/10/01 20:48:15 by aymaatou         ###   ########.fr        #
+#    Updated: 2021/10/06 15:39:45 by aymaatou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ clean:
 
 fclean: clean
 	make fclean -C ./libft
-	rm -rf $(NAME) 
+	rm -rf $(NAME) ./philo.dSYM
 
 bonus: fclean
 	make -C ./libft

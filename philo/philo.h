@@ -39,3 +39,4 @@ long    get_time(void);
 int     check_ar(char **ar);
 t_philo	*init_philo(char **av, t_info *info);
 int 	ft_error(char *err_msg);
+void	death_philo (t_philo *philo, int id, char *task);

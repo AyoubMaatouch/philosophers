@@ -83,3 +83,13 @@ t_philo	*init_philo(char **av, t_info *info)
 	info->print = malloc (sizeof(pthread_mutex_t));
 	return (init_philo_data(info));
 }
+
+
+void	death_philo (t_philo *philo, int id, char *task)
+{
+	philo->t_info->dies = malloc (sizeof(pthread_mutex_t));
+	pthread_mutex_init(philo->t_info->dies, NULL);
+	pthread_mutex_lock(philo->t_info->dies);
+	printf("%ld %d %s\n",(get_time()) / 1000, id, task);
+	exit(EXIT_FAILURE);
+}
