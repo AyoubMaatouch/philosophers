@@ -78,7 +78,10 @@ t_philo	*init_philo(char **av, t_info *info)
     info->time_to_eat = ft_atoi(av[3]) * 1000;
     info->time_to_sleep = ft_atoi(av[4]) * 1000;
     if (av[5])
-		info->num_of_eats = ft_atoi(av[5]);
+		{
+ 			info->exec_eat = 0;
+			info->num_of_eats =  ft_atoi(av[5]);
+		}
 	else
 		info->num_of_eats = 0;
 	info->print = malloc (sizeof(pthread_mutex_t));

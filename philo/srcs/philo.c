@@ -1,5 +1,5 @@
 #include "../includes/philo.h"
-
+#include <string.h>
 void	ft_usleep(long int time_in_ms)
 {
 	long int	start_time;
@@ -14,6 +14,8 @@ void	task_divider(int id, char *task, t_philo *philo)
 {
 	pthread_mutex_lock(philo->t_info->print);
 	printf("%ld %d %s\n",(get_time()) / 1000, id, task);
+	if (!strcmp(task, "\e[0;33mis eating\033[0m") && philo->t_info->num_of_eats > 0)
+		philo->t_info->exec_eat++;
 	pthread_mutex_unlock(philo->t_info->print);
 }
 
@@ -30,7 +32,8 @@ void	philo_reaper(t_philo *philo)
 		{
 			if ((get_time() - d_philo->eat) >= philo->t_info->time_to_die)
 				death_philo(d_philo, d_philo->id_philo, "\e[0;31mdied\033[0m");
-
+			if ((philo->t_info->num_of_eats * philo->t_info->num_philo) == philo->t_info->exec_eat)
+				death_philo(d_philo, d_philo->id_philo, "\e[0;31mdied\033[0m");
 			d_philo = d_philo->next;
 			i++;
 		}
