@@ -37,6 +37,7 @@ int 	ft_error(char *err_msg)
 	ft_putstr_fd(err_msg, 2);
 	exit(1);
 }
+
 t_philo	*init_philo_data(t_info *info)
 {
 	int i;

@@ -1,16 +1,9 @@
 #include <limits.h>
 #include <unistd.h>
 #include <stdlib.h>
-void	ft_check(long num)
-{
-	if (num > INT_MAX || num < INT_MIN)
-		{
-			write (2, "Error\n", 6);
-			exit(1);
-		}
-}
+#include "../includes/philo.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi_be(const char *str)
 {
 	long		i;
 	long		number;
@@ -36,6 +29,15 @@ int	ft_atoi(const char *str)
 			return (number * sign);
 		number = number * 10 + (str[i++] - 48);
 	}
-	ft_check(number * sign);
 	return (number * sign);
+}
+
+int	ft_atoi(const char *str)
+{
+	int	value;
+
+	value = ft_atoi_be(str);
+	if (value <= 0)
+		return (ft_error("invalid arguments\n"));
+	return (value);
 }

@@ -29,7 +29,7 @@ void	philo_reaper(t_philo *philo)
 		while (i < philo->t_info->num_philo)
 		{
 			if ((get_time() - d_philo->eat) >= philo->t_info->time_to_die)
-				death_philo(d_philo, d_philo->id_philo, "died");
+				death_philo(d_philo, d_philo->id_philo, "\e[0;31mdied\033[0m");
 
 			d_philo = d_philo->next;
 			i++;
@@ -47,17 +47,17 @@ void *task_manager(t_philo *philo)
 	while (TRUE)
 	{
 		pthread_mutex_lock(lfork);
-		task_divider(philo->id_philo, "\e[0;31mhas taken a fork\033[0m", philo);
+		task_divider(philo->id_philo, "\e[0;32mhas taken a fork\033[0m", philo);
 		pthread_mutex_lock(rfork);
-		task_divider(philo->id_philo, "\e[0;31mhas taken a fork\033[0m", philo); 
-		task_divider(philo->id_philo, "\e[0;32mis eating\033[0m", philo);
+		task_divider(philo->id_philo, "\e[0;32mhas taken a fork\033[0m", philo); 
+		task_divider(philo->id_philo, "\e[0;33mis eating\033[0m", philo);
 		ft_usleep(philo->t_info->time_to_eat);
 		philo->eat = get_time();
 		pthread_mutex_unlock(lfork);
 		pthread_mutex_unlock(rfork);
-		task_divider(philo->id_philo, "\e[0;33mis sleeping\033[0m", philo);
+		task_divider(philo->id_philo, "\e[0;34mis sleeping\033[0m", philo);
 		ft_usleep(philo->t_info->time_to_sleep);
-		task_divider(philo->id_philo, "\e[0;34mis thinking\033[0m", philo);
+		task_divider(philo->id_philo, "\e[0;35mis thinking\033[0m", philo);
 	}
 }
 
@@ -77,15 +77,6 @@ void	philo_exec(t_philo *philo)
 			i++;
 		}
 		philo_reaper(philo);
-		// i = 0;
-		// f_philo = philo;
-		// while (i < philo->t_info->num_philo)
-		// {
-		// 	pthread_join(*f_philo->philo_thread, NULL);
-		// 	f_philo = f_philo->next;
-		// 	i++;
-		// }
-
 }
 
 int main(int ac, char **av)
@@ -103,7 +94,6 @@ int main(int ac, char **av)
 			return (ft_error("invalid arguments\n"));
 		philo = init_philo(av, info);
 		philo_exec(philo);
-		// while (TRUE);
 	}
 	else
 		return (ft_error("invalid arguments\n"));
