@@ -1,4 +1,3 @@
-#include "libft/libft.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -40,3 +39,6 @@ int     check_ar(char **ar);
 t_philo	*init_philo(char **av, t_info *info);
 int 	ft_error(char *err_msg);
 void	death_philo (t_philo *philo, int id, char *task);
+int		ft_atoi(const char *str);
+int		ft_isdigit(int str);
+void	ft_putstr_fd(char *s, int fd);

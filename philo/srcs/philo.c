@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "../includes/philo.h"
 
 void	ft_usleep(long int time_in_ms)
 {
@@ -103,6 +103,7 @@ int main(int ac, char **av)
 			return (ft_error("invalid arguments\n"));
 		philo = init_philo(av, info);
 		philo_exec(philo);
+		// while (TRUE);
 	}
 	else
 		return (ft_error("invalid arguments\n"));
