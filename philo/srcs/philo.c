@@ -8,12 +8,12 @@ void	ft_usleep(long int time)
 	// start_time = get_time();
 	// while ((get_time() - start_time) < time_in_ms)
 	// 	usleep(time_in_ms);
-	long long	r;
+	// long long	r;
 	long long	mic;
 
 	mic = get_time();
-	r = time - 60;
-	usleep(r * 1000);
+	// r = time - 60;
+	usleep(time - 100);
 	while ((get_time() - mic) < (time));
 }
 
