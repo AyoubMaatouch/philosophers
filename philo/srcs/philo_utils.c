@@ -74,9 +74,9 @@ t_philo	*init_philo(char **av, t_info *info)
 
 	i = 0;
 	info->num_philo = ft_atoi(av[1]);
-    info->time_to_die = ft_atoi(av[2]) * 1000;
-    info->time_to_eat = ft_atoi(av[3]) * 1000;
-    info->time_to_sleep = ft_atoi(av[4]) * 1000;
+    info->time_to_die = (long long)ft_atoi(av[2]) * 1000;
+    info->time_to_eat = (long long)ft_atoi(av[3]) * 1000;
+    info->time_to_sleep = (long long)ft_atoi(av[4]) * 1000;
     if (av[5])
 		{
  			info->exec_eat = 0;

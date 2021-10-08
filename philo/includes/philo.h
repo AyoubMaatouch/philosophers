@@ -12,9 +12,9 @@
 
 typedef struct s_info {
 	int				num_philo;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
+	long long		time_to_die;
+	long long		time_to_eat;
+	long long		time_to_sleep;
 	int				num_of_eats;
 	int				exec_eat;
 	pthread_mutex_t	*print;
