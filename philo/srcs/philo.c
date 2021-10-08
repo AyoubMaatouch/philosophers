@@ -12,9 +12,9 @@ void	ft_usleep(long int time)
 	long long	mic;
 
 	mic = get_time();
-	r = time - 60;
-	usleep(r * 1000);
-	while ((get_time() - mic) < (time * 1000));
+	r = (time - 60) / 1000;
+	usleep(r) ;
+	while ((get_time() - mic) < (time));
 }
 
 void	task_divider(int id, char *task, t_philo *philo)
