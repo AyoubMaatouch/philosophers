@@ -65,6 +65,8 @@ t_philo	*init_philo_data(t_info *info)
 	}
 	philo->next = philo->next = malloc (sizeof(t_philo));
 	philo->next = first_philo;
+	philo->t_info->dies = malloc (sizeof(pthread_mutex_t));
+	pthread_mutex_init(philo->t_info->dies, NULL);
 	return (first_philo);
 }
 
@@ -91,8 +93,6 @@ t_philo	*init_philo(char **av, t_info *info)
 
 void	death_philo (t_philo *philo, int id, char *task)
 {
-	philo->t_info->dies = malloc (sizeof(pthread_mutex_t));
-	pthread_mutex_init(philo->t_info->dies, NULL);
 	pthread_mutex_lock(philo->t_info->dies);
 	printf("%ld %d %s\n",(get_time()) / 1000, id, task);
 	exit(EXIT_FAILURE);

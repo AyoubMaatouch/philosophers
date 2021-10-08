@@ -14,7 +14,7 @@ NAME = philo
 
 SRC = srcs/philo.c srcs/philo_utils.c srcs/ft_atoi.c srcs/ft_isdigit.c srcs/ft_putstr_fd.c
 	  
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror 
 
 all: $(NAME)
 

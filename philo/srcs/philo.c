@@ -1,13 +1,20 @@
 #include "../includes/philo.h"
 #include <string.h>
-void	ft_usleep(long int time_in_ms)
+void	ft_usleep(long int time)
 {
-	long int	start_time;
+	// long int	start_time;
 
-	start_time = 0;
-	start_time = get_time();
-	while ((get_time() - start_time) < time_in_ms)
-		usleep(time_in_ms / 10);
+	// start_time = 0;
+	// start_time = get_time();
+	// while ((get_time() - start_time) < time_in_ms)
+	// 	usleep(time_in_ms);
+	long long	r;
+	long long	mic;
+
+	mic = get_time();
+	r = time - 60;
+	usleep(r * 1000);
+	while ((get_time() - mic) < (time));
 }
 
 void	task_divider(int id, char *task, t_philo *philo)
