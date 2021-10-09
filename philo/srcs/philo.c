@@ -12,7 +12,7 @@ void	ft_usleep(long int time)
 	long long	mic;
 
 	mic = get_time();
-	r = (time - 60) / 1000;
+	r = time - 60;
 	usleep(r) ;
 	while ((get_time() - mic) < (time));
 }
