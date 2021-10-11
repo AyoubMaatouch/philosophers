@@ -12,9 +12,9 @@ void	ft_usleep(long int time)
 	long long	mic;
 
 	mic = get_time();
-	r = (time - 60) / 1000;
+	r = time - 1000;
 	usleep(r) ;
-	while ((get_time() - mic) < (time));
+	while ((get_time() - mic) <= (time));
 }
 
 void	task_divider(int id, char *task, t_philo *philo)
@@ -60,9 +60,9 @@ void *task_manager(t_philo *philo)
 		task_divider(philo->id_philo, "\e[0;32mhas taken a fork\033[0m", philo);
 		pthread_mutex_lock(rfork);
 		task_divider(philo->id_philo, "\e[0;32mhas taken a fork\033[0m", philo); 
+		philo->eat = get_time();
 		task_divider(philo->id_philo, "\e[0;33mis eating\033[0m", philo);
 		ft_usleep(philo->t_info->time_to_eat);
-		philo->eat = get_time();
 		pthread_mutex_unlock(lfork);
 		pthread_mutex_unlock(rfork);
 		task_divider(philo->id_philo, "\e[0;34mis sleeping\033[0m", philo);

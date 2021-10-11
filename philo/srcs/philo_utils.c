@@ -52,6 +52,7 @@ t_philo	*init_philo_data(t_info *info)
 		philo->philo_thread = malloc (sizeof(pthread_t));
 		philo->philo_mutex = malloc (sizeof(pthread_mutex_t));
 		pthread_mutex_init(philo->philo_mutex , NULL);
+		// pthread_mutex_init(philo->t_info->dies, NULL);
 		philo->id_philo = i + 1;
 		philo->t_info = info;
 		philo->eat = 0;
@@ -65,8 +66,7 @@ t_philo	*init_philo_data(t_info *info)
 	}
 	philo->next = philo->next = malloc (sizeof(t_philo));
 	philo->next = first_philo;
-	philo->t_info->dies = malloc (sizeof(pthread_mutex_t));
-	pthread_mutex_init(philo->t_info->dies, NULL);
+	// philo->t_info->dies = malloc (sizeof(pthread_mutex_t));
 	return (first_philo);
 }
 
@@ -87,6 +87,7 @@ t_philo	*init_philo(char **av, t_info *info)
 	else
 		info->num_of_eats = 0;
 	info->print = malloc (sizeof(pthread_mutex_t));
+	info->dies = malloc (sizeof(pthread_mutex_t));
 	return (init_philo_data(info));
 }
 
