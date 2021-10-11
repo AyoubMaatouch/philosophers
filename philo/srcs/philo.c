@@ -21,8 +21,8 @@ void	task_divider(int id, char *task, t_philo *philo)
 {
 	pthread_mutex_lock(philo->t_info->print);
 	printf("%ld %d %s\n",(get_time()) / 1000, id, task);
-	if (!strcmp(task, "\e[0;33mis eating\033[0m") && philo->t_info->num_of_eats > 0)
-		philo->t_info->exec_eat++;
+	// if (!strcmp(task, "\e[0;33mis eating\033[0m") && philo->t_info->num_of_eats > 0)
+	// 	philo->t_info->exec_eat++;
 	pthread_mutex_unlock(philo->t_info->print);
 }
 
@@ -39,8 +39,8 @@ void	philo_reaper(t_philo *philo)
 		{
 			if ((get_time() - d_philo->eat) >= philo->t_info->time_to_die)
 				death_philo(d_philo, d_philo->id_philo, "\e[0;31mdied\033[0m");
-			if ((philo->t_info->num_of_eats * philo->t_info->num_philo) == philo->t_info->exec_eat)
-				death_philo(d_philo, d_philo->id_philo, "\e[0;31mdied\033[0m");
+			// if ((philo->t_info->num_of_eats * philo->t_info->num_philo) == philo->t_info->exec_eat)
+			// 	death_philo(d_philo, d_philo->id_philo, "\e[0;31mdied\033[0m");
 			d_philo = d_philo->next;
 			i++;
 		}
@@ -68,7 +68,10 @@ void *task_manager(t_philo *philo)
 		task_divider(philo->id_philo, "\e[0;34mis sleeping\033[0m", philo);
 		ft_usleep(philo->t_info->time_to_sleep);
 		task_divider(philo->id_philo, "\e[0;35mis thinking\033[0m", philo);
+		if (philo->t_info->num_of_eats > 0 && philo->ate++ == philo->t_info->num_of_eats)
+			break ;
 	}
+	exit(EXIT_SUCCESS);
 }
 
 void	philo_exec(t_philo *philo)

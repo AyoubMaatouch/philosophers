@@ -55,7 +55,7 @@ t_philo	*init_philo_data(t_info *info)
 		philo->id_philo = i + 1;
 		philo->t_info = info;
 		philo->eat = 0;
-		philo->think = 0;
+		philo->ate = 0;
 		if (i != info->num_philo - 1)
 		{
 			philo->next = malloc (sizeof(t_philo));

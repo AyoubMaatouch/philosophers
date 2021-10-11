@@ -25,7 +25,7 @@ typedef struct s_info {
 typedef struct s_philo {
 	t_info			*t_info;
 	long long		eat;
-	long long		think;
+	long long		ate;
 	pthread_t		*philo_thread;
 	pthread_mutex_t	*philo_mutex;
 	int				id_philo;
