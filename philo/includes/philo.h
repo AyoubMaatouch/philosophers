@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aymaatou <aymaatou@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/11 19:18:35 by aymaatou          #+#    #+#             */
+/*   Updated: 2021/10/11 19:20:22 by aymaatou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -41,4 +53,6 @@ void	death_philo(t_philo *philo, int id, char *task);
 int		ft_atoi(const char *str);
 int		ft_isdigit(int str);
 void	ft_putstr_fd(char *s, int fd);
+void	ft_usleep(long int time);
+int		is_num(char *ar);
 #endif // PHILO_H

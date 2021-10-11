@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_usleep.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aymaatou <aymaatou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/12 12:48:47 by aymaatou          #+#    #+#             */
-/*   Updated: 2021/10/11 19:12:37 by aymaatou         ###   ########.fr       */
+/*   Created: 2021/10/11 19:13:56 by aymaatou          #+#    #+#             */
+/*   Updated: 2021/10/11 19:14:19 by aymaatou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	ft_isdigit(int str)
+void	ft_usleep(long int time)
 {
-	if (str >= 48 && str <= 57)
-	{
-		return (1);
-	}
-	return (0);
-}
+	long long	r;
+	long long	mic;
 
-int	is_num(char *ar)
-{
-	int	i;
-
-	i = 0;
-	while (ar[i])
-	{
-		if (ft_isdigit(ar[i++]) == 0)
-			return (0);
-	}
-	return (1);
+	mic = get_time();
+	r = time - 1000;
+	usleep(r);
+	while ((get_time() - mic) <= (time))
+		;
 }
