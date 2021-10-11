@@ -6,7 +6,7 @@
 /*   By: aymaatou <aymaatou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 19:13:29 by aymaatou          #+#    #+#             */
-/*   Updated: 2021/10/11 19:13:30 by aymaatou         ###   ########.fr       */
+/*   Updated: 2021/10/11 22:44:47 by aymaatou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ t_philo	*init_philo_data(t_info *info)
 			philo = philo->next;
 		}
 	}
-	philo->next = malloc (sizeof(t_philo));
 	philo->next = first_philo;
 	return (first_philo);
 }
